@@ -1,0 +1,205 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">DebugWince</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D0EA40A-5C80-4477-A901-7648E57BA749}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenNetCf.Orm</RootNamespace>
+    <AssemblyName>OpenNetCf.Orm</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <PlatformID>E2BECB1F-8C8C-41ba-B736-9BE7D946A398</PlatformID>
+    <OSVersion>5.0</OSVersion>
+    <DeployDirSuffix>ZgLib</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows CE</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseWince|AnyCPU' ">
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <OutputPath>bin\Release\Remote\</OutputPath>
+    <DefineConstants>$(PlatformFamilyName)</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugWince|AnyCPU' ">
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\Remote\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;$(PlatformFamilyName)</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json.Compact, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibs\Newtonsoft.Json.Compact.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\EntityFieldAttribute.cs" />
+    <Compile Include="Attributes\EntityAttribute.cs" />
+    <Compile Include="Attributes\FieldAttribute.cs" />
+    <Compile Include="Attributes\ForeignKeyAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
+    <Compile Include="Attributes\ReferenceAttribute.cs" />
+    <Compile Include="Attributes\ReferenceType.cs" />
+    <Compile Include="Caches\NoCache.cs" />
+    <Compile Include="Constants\DefaultType.cs" />
+    <Compile Include="Constants\FieldSearchOrder.cs" />
+    <Compile Include="Entity\Fields\IFieldPropertyFactory.cs" />
+    <Compile Include="Entity\Serializers\DefaultEntitySerializer.cs" />
+    <Compile Include="DisposableBase.cs" />
+    <Compile Include="Caches\EntitiesCache.cs" />
+    <Compile Include="Entity\Constraints\CustomIndex.cs" />
+    <Compile Include="Entity\Fields\Field.cs" />
+    <Compile Include="Entity\Constraints\FieldIndex.cs" />
+    <Compile Include="Entity\Constraints\ForeignKey.cs" />
+    <Compile Include="Entity\Constraints\Index.cs" />
+    <Compile Include="Entity\Constraints\PrimaryKey.cs" />
+    <Compile Include="Entity\References\Reference.cs" />
+    <Compile Include="Entity\EntityEvent.cs" />
+    <Compile Include="Entity\Fields\FieldProperties.cs" />
+    <Compile Include="Entity\Fields\ICustomSqlField.cs" />
+    <Compile Include="Entity\Fields\ObjectField.cs" />
+    <Compile Include="Filters\AddDay.cs" />
+    <Compile Include="Filters\CountValue.cs" />
+    <Compile Include="Filters\WildCardCound.cs" />
+    <Compile Include="IDistinctable.cs" />
+    <Compile Include="Entity\IEntityObserver.cs" />
+    <Compile Include="DistinctCollection.cs" />
+    <Compile Include="Entity\IObservableEntity.cs" />
+    <Compile Include="Entity\IPersistableEntity.cs" />
+    <Compile Include="Entity\Lazy.cs" />
+    <Compile Include="Entity\Notifier.cs" />
+    <Compile Include="Entity\References\ReferenceCollectionHolder.cs" />
+    <Compile Include="Entity\EntityBase.cs" />
+    <Compile Include="Entity\IDistinctableEntity.cs" />
+    <Compile Include="Entity\References\MandatoryReferenceHolder.cs" />
+    <Compile Include="Entity\References\NullableReferenceHolder.cs" />
+    <Compile Include="EventArgs.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="EntityInfo.cs" />
+    <Compile Include="EntityInfoCollection.cs" />
+    <Compile Include="DataStore.cs" />
+    <Compile Include="Filters\And.cs" />
+    <Compile Include="Filters\ColumnValue.cs" />
+    <Compile Include="Filters\Condition.cs" />
+    <Compile Include="Filters\EqualCondition.cs" />
+    <Compile Include="Filters\FilterFactory.cs" />
+    <Compile Include="Filters\GreaterThanCondition.cs" />
+    <Compile Include="Filters\GreaterThanOrEqualCondition.cs" />
+    <Compile Include="Filters\ICondition.cs" />
+    <Compile Include="Filters\IFilter.cs" />
+    <Compile Include="Filters\IFilterFactory.cs" />
+    <Compile Include="Filters\InCondition.cs" />
+    <Compile Include="Filters\LessThanCondition.cs" />
+    <Compile Include="Filters\LessThanOrEqualCondition.cs" />
+    <Compile Include="Filters\LikeCondition.cs" />
+    <Compile Include="Filters\NotEqualCondition.cs" />
+    <Compile Include="Filters\ObjectValue.cs" />
+    <Compile Include="Filters\Or.cs" />
+    <Compile Include="Filters\ScalarOperator.cs" />
+    <Compile Include="Filters\SubtractOperation.cs" />
+    <Compile Include="Caches\IEntityCache.cs" />
+    <Compile Include="Entity\Serializers\IEntitySerializer.cs" />
+    <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Interfaces\IEntityInfo.cs" />
+    <Compile Include="Entity\References\ReferenceHolder.cs" />
+    <Compile Include="Caches\EntityCache.cs" />
+    <Compile Include="IOrmLogger.cs" />
+    <Compile Include="IOrmObserver.cs" />
+    <Compile Include="OrmDebug.cs" />
+    <Compile Include="Queries\IAggragableQuery.cs" />
+    <Compile Include="Queries\IClause.cs" />
+    <Compile Include="Queries\IEntityBuilder.cs" />
+    <Compile Include="Queries\IFilterable.cs" />
+    <Compile Include="Queries\IJoin.cs" />
+    <Compile Include="Queries\IJoinable.cs" />
+    <Compile Include="Queries\IOrderableQuery.cs" />
+    <Compile Include="Queries\IOrderedQuery.cs" />
+    <Compile Include="Queries\ISelectable.cs" />
+    <Compile Include="Queries\ISqlFactory.cs" />
+    <Compile Include="Queries\ISqlQuery.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="SqlIndexInfo.cs" />
+    <None Include="SqlDateTimeDefault.cs" />
+    <Compile Include="Filters\FilterOperator.cs" />
+    <Compile Include="Interfaces\IDefaultValue.cs" />
+    <Compile Include="Interfaces\IDataStore.cs" />
+    <Compile Include="Entity\Constraints\KeyScheme.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sql\IDbAccessStrategy.cs" />
+    <Compile Include="Sql\IDbEngine.cs" />
+    <Compile Include="Sql\ISqlDataStore.cs" />
+    <Compile Include="Sql\Queries\Count.cs" />
+    <Compile Include="Sql\Queries\Delete.cs" />
+    <Compile Include="Sql\Queries\GroupBy.cs" />
+    <Compile Include="Sql\Queries\HomeMadeSqlClause.cs" />
+    <Compile Include="Sql\Queries\Join.cs" />
+    <Compile Include="Sql\Queries\LeftJoin.cs" />
+    <Compile Include="Sql\Queries\OrderBy.cs" />
+    <Compile Include="Sql\Queries\QuerySet.cs" />
+    <Compile Include="Sql\Queries\Select.cs" />
+    <Compile Include="Sql\Queries\Selectable.cs" />
+    <Compile Include="Sql\Queries\SelectTop.cs" />
+    <Compile Include="Sql\Queries\Where.cs" />
+    <Compile Include="Sql\Schema\ColumnDefinition.cs" />
+    <Compile Include="Sql\Schema\ISchemaChecker.cs" />
+    <Compile Include="Sql\Schema\SchemaChecker.cs" />
+    <Compile Include="Sql\Schema\TableDefinition.cs" />
+    <Compile Include="Sql\SqlDataStore.cs" />
+    <Compile Include="Sql\StandardDbAccessStrategy.cs" />
+    <Compile Include="Validation\Validate.cs" />
+    <Compile Include="Validation\Validation.cs" />
+    <Compile Include="Validation\ValidationException.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

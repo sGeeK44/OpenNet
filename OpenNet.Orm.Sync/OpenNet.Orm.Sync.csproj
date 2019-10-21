@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">DebugDesktop</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A320BA1A-9FE9-462F-84A7-90CAED7B39A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenNetCf.Orm.Sync</RootNamespace>
+    <AssemblyName>OpenNetCf.Orm.Sync</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugDesktop|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\Desktop\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DESKTOP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseDesktop|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\Desktop\</OutputPath>
+    <DefineConstants>TRACE;DESKTOP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agents\ClientSyncAgent.cs" />
+    <Compile Include="Agents\IObservableProgession.cs" />
+    <Compile Include="Agents\IOrmSyncObserver.cs" />
+    <Compile Include="Agents\LinearProgression.cs" />
+    <Compile Include="Changes\ClientEntitiesChangeset.cs" />
+    <Compile Include="Changes\ServerEntitiesChangeset.cs" />
+    <Compile Include="Conflicts\IdentityChange.cs" />
+    <Compile Include="Conflicts\IEntityConflict.cs" />
+    <Compile Include="Conflicts\IgnoreAllConflicts.cs" />
+    <Compile Include="Conflicts\IgnoreAllEntityConflict.cs" />
+    <Compile Include="Conflicts\ResolveAllConflicts.cs" />
+    <Compile Include="Entity\ISyncableEntity.cs" />
+    <Compile Include="Entity\SyncEntity.cs" />
+    <Compile Include="Agents\SyncTypes.cs" />
+    <Compile Include="Changes\FieldValue.cs" />
+    <Compile Include="Entity\SyncDirection.cs" />
+    <Compile Include="LocalBoundTransport.cs" />
+    <Compile Include="SyncDatastore.cs" />
+    <Compile Include="Conflicts\Conflict.cs" />
+    <Compile Include="Conflicts\IConflictsManager.cs" />
+    <Compile Include="Changes\EntitiesChangeset.cs" />
+    <Compile Include="Changes\EntityChange.cs" />
+    <Compile Include="Changes\EntityChangeset.cs" />
+    <Compile Include="Changes\EntityChangesetBuilder.cs" />
+    <Compile Include="Conflicts\SolvableEntityConflict.cs" />
+    <Compile Include="Changes\EntityField.cs" />
+    <Compile Include="Conflicts\MergeResolution.cs" />
+    <Compile Include="Conflicts\OperationTypes.cs" />
+    <Compile Include="Entity\SynchronizedEntityAttribute.cs" />
+    <Compile Include="Entity\EntityTombstoneAttribute.cs" />
+    <Compile Include="Entity\EntityTombstone.cs" />
+    <Compile Include="Entity\IEntityTombstone.cs" />
+    <Compile Include="Conflicts\IEntityConflictSolver.cs" />
+    <Compile Include="IDateTimeManager.cs" />
+    <Compile Include="Agents\ISyncStatProvider.cs" />
+    <Compile Include="Entity\ISyncable.cs" />
+    <Compile Include="ISyncSessionInfo.cs" />
+    <Compile Include="ISyncTransport.cs" />
+    <Compile Include="Conflicts\RemoteMergeResolution.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Agents\ServerSyncAgent.cs" />
+    <Compile Include="Conflicts\DefaultEntitySolver.cs" />
+    <Compile Include="Agents\SyncStatProvider.cs" />
+    <Compile Include="Entity\SyncableRepository.cs" />
+    <Compile Include="Entity\SyncableEntity.cs" />
+    <Compile Include="Agents\SyncAgent.cs" />
+    <Compile Include="SyncQueries\DeleteSyncQuery.cs" />
+    <Compile Include="SyncQueries\InsertSyncQuery.cs" />
+    <Compile Include="SyncQueries\LastSyncQuery.cs" />
+    <Compile Include="SyncQueries\SyncQuery.cs" />
+    <Compile Include="SyncQueries\UpdateSyncQuery.cs" />
+    <Compile Include="SyncSessionInfo.cs" />
+    <Compile Include="SyncSessionInfoRepository.cs" />
+    <Compile Include="Agents\SyncStates.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenNet.Orm\OpenNet.Orm.csproj">
+      <Project>{6E9C7DA3-AD60-4E44-9D3A-7BBD3A20D79F}</Project>
+      <Name>OpenNet.Orm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

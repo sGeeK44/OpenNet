@@ -1,0 +1,136 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">DebugWince</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A320BA1A-9FE9-462F-84A7-90CAED7B39A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenNetCf.Orm.Sync</RootNamespace>
+    <AssemblyName>OpenNetCf.Orm.Sync</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <PlatformID>E2BECB1F-8C8C-41ba-B736-9BE7D946A398</PlatformID>
+    <OSVersion>5.0</OSVersion>
+    <DeployDirSuffix>ZgLib</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows CE</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseWince|AnyCPU' ">
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <OutputPath>bin\Release\Remote\</OutputPath>
+    <DefineConstants>$(PlatformFamilyName)</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugWince|AnyCPU' ">
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\Remote\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;$(PlatformFamilyName)</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRules>-Microsoft.Usage#CA2212</CodeAnalysisRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json.Compact, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibs\Newtonsoft.Json.Compact.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agents\ClientSyncAgent.cs" />
+    <Compile Include="Agents\IObservableProgession.cs" />
+    <Compile Include="Agents\IOrmSyncObserver.cs" />
+    <Compile Include="Agents\ISyncStatProvider.cs" />
+    <Compile Include="Agents\LinearProgression.cs" />
+    <Compile Include="Agents\ServerSyncAgent.cs" />
+    <Compile Include="Agents\SyncAgent.cs" />
+    <Compile Include="Agents\SyncStates.cs" />
+    <Compile Include="Agents\SyncStatProvider.cs" />
+    <Compile Include="Agents\SyncTypes.cs" />
+    <Compile Include="Changes\ClientEntitiesChangeset.cs" />
+    <Compile Include="Changes\EntitiesChangeset.cs" />
+    <Compile Include="Changes\EntityChange.cs" />
+    <Compile Include="Changes\EntityChangeset.cs" />
+    <Compile Include="Changes\EntityChangesetBuilder.cs" />
+    <Compile Include="Changes\EntityField.cs" />
+    <Compile Include="Changes\FieldValue.cs" />
+    <Compile Include="Changes\ServerEntitiesChangeset.cs" />
+    <Compile Include="Conflicts\Conflict.cs" />
+    <Compile Include="Conflicts\DefaultEntitySolver.cs" />
+    <Compile Include="Conflicts\IConflictsManager.cs" />
+    <Compile Include="Conflicts\IdentityChange.cs" />
+    <Compile Include="Conflicts\IEntityConflict.cs" />
+    <Compile Include="Conflicts\IEntityConflictSolver.cs" />
+    <Compile Include="Conflicts\IgnoreAllConflicts.cs" />
+    <Compile Include="Conflicts\IgnoreAllEntityConflict.cs" />
+    <Compile Include="Conflicts\MergeResolution.cs" />
+    <Compile Include="Conflicts\OperationTypes.cs" />
+    <Compile Include="Conflicts\RemoteMergeResolution.cs" />
+    <Compile Include="Conflicts\ResolveAllConflicts.cs" />
+    <Compile Include="Conflicts\SolvableEntityConflict.cs" />
+    <Compile Include="Entity\EntityTombstone.cs" />
+    <Compile Include="Entity\EntityTombstoneAttribute.cs" />
+    <Compile Include="Entity\IEntityTombstone.cs" />
+    <Compile Include="Entity\ISyncable.cs" />
+    <Compile Include="Entity\ISyncableEntity.cs" />
+    <Compile Include="Entity\SyncableEntity.cs" />
+    <Compile Include="Entity\SyncableRepository.cs" />
+    <Compile Include="Entity\SyncDirection.cs" />
+    <Compile Include="Entity\SyncEntity.cs" />
+    <Compile Include="Entity\SynchronizedEntityAttribute.cs" />
+    <Compile Include="IDateTimeManager.cs" />
+    <Compile Include="ISyncSessionInfo.cs" />
+    <Compile Include="ISyncTransport.cs" />
+    <Compile Include="LocalBoundTransport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyncDatastore.cs" />
+    <Compile Include="SyncQueries\DeleteSyncQuery.cs" />
+    <Compile Include="SyncQueries\InsertSyncQuery.cs" />
+    <Compile Include="SyncQueries\LastSyncQuery.cs" />
+    <Compile Include="SyncQueries\SyncQuery.cs" />
+    <Compile Include="SyncQueries\UpdateSyncQuery.cs" />
+    <Compile Include="SyncSessionInfo.cs" />
+    <Compile Include="SyncSessionInfoRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenNetCf.Orm\OpenNetCf.Orm.Wince.csproj">
+      <Project>{2D0EA40A-5C80-4477-A901-7648E57BA749}</Project>
+      <Name>OpenNetCf.Orm.Wince</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
